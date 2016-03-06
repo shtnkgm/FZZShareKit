@@ -53,6 +53,7 @@
         }else{
             //不明なクラスのアイテム
             NSLog(@"Unknown item type %@", item);
+            [self activityDidFinish:NO];
         }
     }
     

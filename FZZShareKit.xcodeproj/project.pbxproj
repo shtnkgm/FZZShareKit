@@ -92,6 +92,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C36069AC1C8C63690046D78D /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				C3E9AF521C887770009DBDF5 /* FZZOtherAppActivity.h */,
+				C3E9AF531C887770009DBDF5 /* FZZOtherAppActivity.m */,
+				C3E9AF461C8861A1009DBDF5 /* FZZInstagramActivity.h */,
+				C3E9AF471C8861A1009DBDF5 /* FZZInstagramActivity.m */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
+		C36069AD1C8C637F0046D78D /* Localize */ = {
+			isa = PBXGroup;
+			children = (
+				C3E9AF5B1C887FC2009DBDF5 /* NSString+FZZShareKitLocalized.h */,
+				C3E9AF5C1C887FC2009DBDF5 /* NSString+FZZShareKitLocalized.m */,
+				C3E9AF621C88802D009DBDF5 /* FZZShareKitLocalizable.strings */,
+			);
+			name = Localize;
+			sourceTree = "<group>";
+		};
 		C3E9AF1E1C84815E009DBDF5 = {
 			isa = PBXGroup;
 			children = (
@@ -113,16 +134,11 @@
 		C3E9AF291C84815E009DBDF5 /* FZZShareKit */ = {
 			isa = PBXGroup;
 			children = (
-				C3E9AF5B1C887FC2009DBDF5 /* NSString+FZZShareKitLocalized.h */,
-				C3E9AF5C1C887FC2009DBDF5 /* NSString+FZZShareKitLocalized.m */,
-				C3E9AF621C88802D009DBDF5 /* FZZShareKitLocalizable.strings */,
-				C3E9AF491C886337009DBDF5 /* image */,
 				C3E9AF411C85EEE2009DBDF5 /* FZZShareKit.h */,
 				C3E9AF421C85EEE2009DBDF5 /* FZZShareKit.m */,
-				C3E9AF521C887770009DBDF5 /* FZZOtherAppActivity.h */,
-				C3E9AF531C887770009DBDF5 /* FZZOtherAppActivity.m */,
-				C3E9AF461C8861A1009DBDF5 /* FZZInstagramActivity.h */,
-				C3E9AF471C8861A1009DBDF5 /* FZZInstagramActivity.m */,
+				C36069AD1C8C637F0046D78D /* Localize */,
+				C36069AC1C8C63690046D78D /* Activity */,
+				C3E9AF491C886337009DBDF5 /* image */,
 				C3E9AF2D1C84815E009DBDF5 /* AppDelegate.h */,
 				C3E9AF2E1C84815E009DBDF5 /* AppDelegate.m */,
 				C3E9AF301C84815E009DBDF5 /* ViewController.h */,

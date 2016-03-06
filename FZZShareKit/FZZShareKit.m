@@ -10,6 +10,7 @@
 #import "FZZInstagramActivity.h"
 #import "FZZOtherAppActivity.h"
 #import "SVProgressHUD.h"
+#import "NSString+FZZShareKitLocalized.h"
 
 @interface FZZShareKit()
 
@@ -49,8 +50,7 @@
     
     self.otherAppActivity.superViewController = activityViewController;
     
-    activityViewController.excludedActivityTypes = @[UIActivityTypeCopyToPasteboard,
-                                                     UIActivityTypeAssignToContact,
+    activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact,
                                                      UIActivityTypeAddToReadingList,
                                                      UIActivityTypePrint];
     
@@ -58,16 +58,56 @@
                                                             BOOL completed,
                                                             NSArray *returnedItems,
                                                             NSError *error){
+        NSLog(@"%@,%d,%@",activityType,completed,error.description);
+        
         if(error){
             [_delegate sharekit:self didSharedWithStatus:FZZShareStatusFail];
-            [SVProgressHUD showErrorWithStatus:nil];
+            NSString *errorMessage = [NSString stringWithFormat:@"%@(%@)",[@"Failed!" localized],error.description];
+            if(errorMessage){
+                [SVProgressHUD showErrorWithStatus:errorMessage];
+            }else{
+                [SVProgressHUD showErrorWithStatus:[@"Failed!" localized]];
+            }
             return;
         }
         
         if(completed){
-            if(![activityType isEqualToString:@"UIActivityTypePostToOtherApp"]){
-                [SVProgressHUD showSuccessWithStatus:nil];
+            //完了メッセージを表示
+            if([activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
+                [SVProgressHUD showSuccessWithStatus:[@"Saved!" localized]];
+                [_delegate sharekit:self didSharedWithStatus:FZZShareStatusSuccess];
+                return;
             }
+            
+            if([activityType isEqualToString:UIActivityTypeCopyToPasteboard]){
+                [SVProgressHUD showSuccessWithStatus:[@"Copied!" localized]];
+                [_delegate sharekit:self didSharedWithStatus:FZZShareStatusSuccess];
+                return;
+            }
+            
+            if([activityType isEqualToString:UIActivityTypeMail] ||
+               [activityType isEqualToString:UIActivityTypeMessage] ||
+               [activityType isEqualToString:UIActivityTypeAirDrop] ||
+               [activityType isEqualToString:UIActivityTypePostToFacebook] ||
+               [activityType isEqualToString:UIActivityTypePostToTencentWeibo] ||
+               [activityType isEqualToString:UIActivityTypePostToTwitter] ||
+               [activityType isEqualToString:UIActivityTypePostToVimeo] ||
+               [activityType isEqualToString:UIActivityTypePostToWeibo] ||
+               [activityType isEqualToString:UIActivityTypePostToFlickr]){
+                [SVProgressHUD showSuccessWithStatus:[@"Shared!" localized]];
+                [_delegate sharekit:self didSharedWithStatus:FZZShareStatusSuccess];
+                return;
+            }
+            
+            if([activityType isEqualToString:@"UIActivityTypePostToOtherApp"] ||
+               [activityType isEqualToString:@"UIActivityTypePostToInstagram"]){
+                [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
+                [_delegate sharekit:self didSharedWithStatus:FZZShareStatusSuccess];
+                return;
+            }
+            
+            //それ以外の場合
+            [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
             [_delegate sharekit:self didSharedWithStatus:FZZShareStatusSuccess];
             return;
         }else{

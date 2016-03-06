@@ -81,4 +81,15 @@
     return image;
 }
 
+- (void) documentInteractionControllerDidDismissOpenInMenu: (UIDocumentInteractionController *) controller
+{
+    // Inform delegate
+    if([self.delegate respondsToSelector:@selector(openInAppActivityDidDismissDocumentInteractionController:)]) {
+        [self.delegate openInAppActivityDidDismissDocumentInteractionController:self];
+    }
+    
+    // Inform app that the activity has finished
+    [self activityDidFinish:NO];
+}
+
 @end

@@ -52,9 +52,6 @@
     if(status == FZZShareStatusCancel){
         NSLog(@"Cancel");
     }
-    
-    [self.shareKit shareImage:[UIImage imageNamed:@"AppBankOff.jpeg"]
-                     withText:@"#test"];
 }
 
 @end

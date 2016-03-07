@@ -1,14 +1,17 @@
 PODS:
+  - Appirater (2.0.5)
   - SVProgressHUD (HEAD based on 2.0-beta8)
   - TOCropViewController (1.2.6)
   - TTOpenInAppActivity (1.0)
 
 DEPENDENCIES:
+  - Appirater
   - SVProgressHUD (HEAD)
   - TOCropViewController
   - TTOpenInAppActivity
 
 SPEC CHECKSUMS:
+  Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
   SVProgressHUD: 6e48a1dda09ce3b58adc41d013baed3a8e8980ff
   TOCropViewController: 030e38f7c696d8eec4320a5baa8250b49c8f065f
   TTOpenInAppActivity: c2218fe419d03ddd4ffb1f07d52d66e0d213d0d4

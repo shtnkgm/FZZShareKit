@@ -63,6 +63,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "TTOpenInAppActivity/TTOpenInAppActivity/TTOpenInAppActivity7.png"
   install_resource "TTOpenInAppActivity/TTOpenInAppActivity/TTOpenInAppActivity7@2x.png"
   install_resource "TTOpenInAppActivity/TTOpenInAppActivity/TTOpenInAppActivity@2x.png"
+  install_resource "${BUILT_PRODUCTS_DIR}/Appirater.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/TOCropViewControllerBundle.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -71,6 +72,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "TTOpenInAppActivity/TTOpenInAppActivity/TTOpenInAppActivity7.png"
   install_resource "TTOpenInAppActivity/TTOpenInAppActivity/TTOpenInAppActivity7@2x.png"
   install_resource "TTOpenInAppActivity/TTOpenInAppActivity/TTOpenInAppActivity@2x.png"
+  install_resource "${BUILT_PRODUCTS_DIR}/Appirater.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/TOCropViewControllerBundle.bundle"
 fi
 

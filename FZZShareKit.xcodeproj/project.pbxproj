@@ -31,6 +31,9 @@
 /* Begin PBXFileReference section */
 		0EC69996ADE2DCB4028E2029 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B0497BC459C39FB5A734C8ED /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C3606A041C8DC4FB0046D78D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C3606A061C8DC5030046D78D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C3606A081C8DC5090046D78D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C3E9AF271C84815E009DBDF5 /* FZZShareKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FZZShareKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E9AF2B1C84815E009DBDF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C3E9AF2D1C84815E009DBDF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +81,9 @@
 		1DF6751A944C105B0B3DAE33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3606A081C8DC5090046D78D /* StoreKit.framework */,
+				C3606A061C8DC5030046D78D /* SystemConfiguration.framework */,
+				C3606A041C8DC4FB0046D78D /* CFNetwork.framework */,
 				ECA325F2266CD4AB28AB22A1 /* libPods.a */,
 			);
 			name = Frameworks;

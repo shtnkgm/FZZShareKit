@@ -54,6 +54,14 @@
                                                      UIActivityTypeAddToReadingList,
                                                      UIActivityTypePrint];
     
+    if(_actionButton){
+        activityViewController.popoverPresentationController.sourceView = _actionButton;
+        activityViewController.popoverPresentationController.sourceRect = _actionButton.bounds;
+    }else if(_actionBarButton){
+        activityViewController.popoverPresentationController.barButtonItem = _actionBarButton;
+    }
+    
+    __weak typeof(self) weakSelf = self;
     [activityViewController setCompletionWithItemsHandler:^(NSString *activityType,
                                                             BOOL completed,
                                                             NSArray *returnedItems,
@@ -61,7 +69,7 @@
         NSLog(@"%@,%d,%@",activityType,completed,error.description);
         
         if(error){
-            [_delegate sharekit:self didSharedWithStatus:FZZShareStatusFail];
+            [weakSelf.delegate sharekit:self didSharedWithStatus:FZZShareStatusFail];
             NSString *errorMessage = [NSString stringWithFormat:@"%@(%@)",[@"Failed!" localized],error.description];
             if(errorMessage){
                 [SVProgressHUD showErrorWithStatus:errorMessage];
@@ -72,16 +80,17 @@
         }
         
         if(completed){
+            
             //完了メッセージを表示
             if([activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
                 [SVProgressHUD showSuccessWithStatus:[@"Saved!" localized]];
-                [_delegate sharekit:self didSharedWithStatus:FZZShareStatusSuccess];
+                [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
             if([activityType isEqualToString:UIActivityTypeCopyToPasteboard]){
                 [SVProgressHUD showSuccessWithStatus:[@"Copied!" localized]];
-                [_delegate sharekit:self didSharedWithStatus:FZZShareStatusSuccess];
+                [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
@@ -95,33 +104,26 @@
                [activityType isEqualToString:UIActivityTypePostToWeibo] ||
                [activityType isEqualToString:UIActivityTypePostToFlickr]){
                 [SVProgressHUD showSuccessWithStatus:[@"Shared!" localized]];
-                [_delegate sharekit:self didSharedWithStatus:FZZShareStatusSuccess];
+                [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
             if([activityType isEqualToString:@"UIActivityTypePostToOtherApp"] ||
                [activityType isEqualToString:@"UIActivityTypePostToInstagram"]){
                 [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
-                [_delegate sharekit:self didSharedWithStatus:FZZShareStatusSuccess];
+                [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
             //それ以外の場合
             [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
-            [_delegate sharekit:self didSharedWithStatus:FZZShareStatusSuccess];
+            [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
             return;
         }else{
-            [_delegate sharekit:self didSharedWithStatus:FZZShareStatusCancel];;
+            [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusCancel];;
             return;
         }
     }];
-    
-    if(_actionButton){
-        activityViewController.popoverPresentationController.sourceView = _actionButton;
-        activityViewController.popoverPresentationController.sourceRect = _actionButton.bounds;
-    }else if(_actionBarButton){
-        activityViewController.popoverPresentationController.barButtonItem = _actionBarButton;
-    }
     
     [(UIViewController *)_delegate presentViewController:activityViewController animated:YES completion:^{
         //何かする？

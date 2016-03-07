@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A3C41639BA3DB4C89AB76A55"
+               BlueprintIdentifier = "3F54098A6C4BAEA2D49F71AF"
                BuildableName = "libTTOpenInAppActivity.a"
                BlueprintName = "TTOpenInAppActivity"
                ReferencedContainer = "container:Pods.xcodeproj">

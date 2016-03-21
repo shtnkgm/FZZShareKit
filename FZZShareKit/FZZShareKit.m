@@ -69,7 +69,7 @@
         NSLog(@"%@,%d,%@",activityType,completed,error.description);
         
         if(error){
-            [weakSelf.delegate sharekit:self didSharedWithStatus:FZZShareStatusFail];
+            [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusFail];
             NSString *errorMessage = [NSString stringWithFormat:@"%@(%@)",[@"Failed!" localized],error.description];
             if(errorMessage){
                 [SVProgressHUD showErrorWithStatus:errorMessage];
@@ -126,7 +126,7 @@
     }];
     
     [(UIViewController *)_delegate presentViewController:activityViewController animated:YES completion:^{
-        //何かする？
+        //何もしない
     }];
 }
 

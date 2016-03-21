@@ -31,7 +31,6 @@
     return [self imageNamedWithoutCache:@"Menu.png"];
 }
 
-
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems {
     for (UIActivityItemProvider *item in activityItems) {
         if ([item isKindOfClass:[UIImage class]]) {

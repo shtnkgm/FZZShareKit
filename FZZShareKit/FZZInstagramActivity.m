@@ -10,16 +10,16 @@
 #import "TOCropViewController.h"
 
 @interface FZZInstagramActivity()
-<TOCropViewControllerDelegate,UIDocumentInteractionControllerDelegate>
-
-@property (nonatomic, strong) UIImage *shareImage;
-@property (nonatomic, copy) NSString *shareString;
+<
+TOCropViewControllerDelegate,
+UIDocumentInteractionControllerDelegate
+>
 
 @property (nonatomic, strong) UIButton *presentFromButton;
-
 @property (nonatomic, strong) TOCropViewController *cropViewController;
-
 @property (nonatomic, strong) UIDocumentInteractionController *documentController;
+@property (nonatomic, strong) UIImage *shareImage;
+@property (nonatomic, copy) NSString *shareString;
 
 @end
 
@@ -37,7 +37,6 @@
 - (UIImage *)activityImage {
     return [self imageNamedWithoutCache:@"Instagram.png"];
 }
-
 
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems {
     NSURL *instagramURL = [NSURL URLWithString:@"instagram://app"];
@@ -98,7 +97,6 @@
         self.shareImage = image;
         [self performActivity];
     }
-    
 }
 
 - (void)performActivity {
@@ -117,7 +115,6 @@
     
     self.documentController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
     self.documentController.delegate = self;
-    //self.documentController.UTI = @"com.instagram.photo";
     self.documentController.UTI = @"com.instagram.exclusivegram";
     
     if (self.shareString){

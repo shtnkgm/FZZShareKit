@@ -30,10 +30,9 @@
     
     self.shareKit = [FZZShareKit new];
     self.shareKit.delegate = self;
-    self.shareKit.baseViewController = self;
     self.shareKit.actionButton = _button;
     [self.shareKit shareImage:[UIImage imageNamed:@"AppBankOff.jpeg"]
-                     withText:@"#hushtag"];
+                     withText:@"#hushtag" baseViewController:self];
 }
 
 - (void)didReceiveMemoryWarning {

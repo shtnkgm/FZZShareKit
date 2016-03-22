@@ -21,11 +21,7 @@
 
 @implementation FZZShareKit
 
-- (void)shareImage:(UIImage *)shareImage withText:(NSString *)shareText{
-    [self useActivityViewControllerWith:shareImage withText:shareText];
-}
-
-- (void)useActivityViewControllerWith:(UIImage *)shareImage withText:(NSString *)shareText{
+- (void)shareImage:(UIImage *)shareImage withText:(NSString *)shareText baseViewController:(UIViewController *)baseViewController{
     if(!shareImage){
         [_delegate sharekit:self didSharedWithStatus:FZZShareStatusFail];
         return;
@@ -125,7 +121,7 @@
         }
     }];
     
-    [_baseViewController presentViewController:activityViewController animated:YES completion:^{
+    [baseViewController presentViewController:activityViewController animated:YES completion:^{
         //何もしない
     }];
 }

@@ -125,7 +125,7 @@
         }
     }];
     
-    [(UIViewController *)_delegate presentViewController:activityViewController animated:YES completion:^{
+    [_baseViewController presentViewController:activityViewController animated:YES completion:^{
         //何もしない
     }];
 }

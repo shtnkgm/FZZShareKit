@@ -63,7 +63,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "TTOpenInAppActivity/TTOpenInAppActivity/TTOpenInAppActivity7.png"
   install_resource "TTOpenInAppActivity/TTOpenInAppActivity/TTOpenInAppActivity7@2x.png"
   install_resource "TTOpenInAppActivity/TTOpenInAppActivity/TTOpenInAppActivity@2x.png"
-  install_resource "${BUILT_PRODUCTS_DIR}/Appirater.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/TOCropViewControllerBundle.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -72,13 +71,12 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "TTOpenInAppActivity/TTOpenInAppActivity/TTOpenInAppActivity7.png"
   install_resource "TTOpenInAppActivity/TTOpenInAppActivity/TTOpenInAppActivity7@2x.png"
   install_resource "TTOpenInAppActivity/TTOpenInAppActivity/TTOpenInAppActivity@2x.png"
-  install_resource "${BUILT_PRODUCTS_DIR}/Appirater.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/TOCropViewControllerBundle.bundle"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
-if [[ "${ACTION}" == "install" ]]; then
+if [[ "${ACTION}" == "install" ]] && [[ "${SKIP_INSTALL}" == "NO" ]]; then
   mkdir -p "${INSTALL_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
   rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${INSTALL_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 fi

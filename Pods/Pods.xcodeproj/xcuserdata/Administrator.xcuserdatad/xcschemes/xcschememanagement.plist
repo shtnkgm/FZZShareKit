@@ -4,16 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Appirater-Appirater.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Appirater.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>10EB1A06D4EA65E1D96F2746FEE7BE15</key>
+		<key>11841C4B48CD85F03376E44DFC65263A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>199F81E00C25B9D671B4E8F6B52BBBCC</key>
+		<key>44E9AA7B02040E70FCB48871F23B7D8C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>33027607BA2300184FB626960CE84C88</key>
+		<key>6BDEB66C2E9084FA32756E4CC4DBFE57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>425CFD44E6FCE21F6DAA0E3E6137F279</key>
+		<key>961BC8FFA9FD86B75F89475791A9CE42</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8DC336A02C97C23D26D93E328975A64A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A96DF8D0B0C9F3D3F54E1F500D9769C5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F1ACDCA220025CBFDF59160654044979</key>
+		<key>C683C669D5B2A96CCA4D0200636BBCD9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

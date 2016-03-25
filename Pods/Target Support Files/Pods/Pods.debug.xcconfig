@@ -1,5 +1,5 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Appirater" "${PODS_ROOT}/Headers/Public/SVProgressHUD" "${PODS_ROOT}/Headers/Public/TOCropViewController" "${PODS_ROOT}/Headers/Public/TTOpenInAppActivity"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/Appirater" -isystem "${PODS_ROOT}/Headers/Public/SVProgressHUD" -isystem "${PODS_ROOT}/Headers/Public/TOCropViewController" -isystem "${PODS_ROOT}/Headers/Public/TTOpenInAppActivity"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Appirater" -l"SVProgressHUD" -l"TOCropViewController" -l"TTOpenInAppActivity" -framework "CFNetwork" -framework "MobileCoreServices" -framework "QuartzCore" -framework "SystemConfiguration" -framework "UIKit" -weak_framework "StoreKit"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/SVProgressHUD" "${PODS_ROOT}/Headers/Public/TOCropViewController" "${PODS_ROOT}/Headers/Public/TTOpenInAppActivity"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/SVProgressHUD" -isystem "${PODS_ROOT}/Headers/Public/TOCropViewController" -isystem "${PODS_ROOT}/Headers/Public/TTOpenInAppActivity"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"SVProgressHUD" -l"TOCropViewController" -l"TTOpenInAppActivity" -framework "MobileCoreServices" -framework "QuartzCore" -framework "UIKit"
 PODS_ROOT = ${SRCROOT}/Pods

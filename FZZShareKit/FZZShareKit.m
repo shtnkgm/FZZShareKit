@@ -17,19 +17,51 @@
 @property (nonatomic, strong) FZZInstagramActivity *instagramActivity;
 @property (nonatomic, strong) FZZOtherAppActivity *otherAppActivity;
 
+@property (nonatomic, weak) UIButton *actionButton;
+@property (nonatomic, weak) UIBarButtonItem *actionBarButton;
+
 @end
 
 @implementation FZZShareKit
 
-- (void)shareImage:(UIImage *)shareImage withText:(NSString *)shareText baseViewController:(UIViewController *)baseViewController{
-    if(!shareImage){
+- (void)shareImage:(UIImage *)image
+              text:(NSString *)text
+          delegate:(id)delegate
+      actionButton:(UIButton *)actionButton
+    viewController:(UIViewController *)viewController{
+    
+    self.delegate = delegate;
+    self.actionButton = actionButton;
+    
+    [self shareImage:image
+                text:text
+      viewController:viewController];
+}
+
+- (void)shareImage:(UIImage *)image
+              text:(NSString *)text
+          delegate:(id)delegate
+   actionBarButton:(UIBarButtonItem *)actionBarButton
+    viewController:(UIViewController *)viewController{
+    
+    self.delegate = delegate;
+    self.actionBarButton = actionBarButton;
+
+}
+
+- (void)shareImage:(UIImage *)image
+              text:(NSString *)text
+    viewController:(UIViewController *)viewController{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [SVProgressHUD show];
+    });
+    
+    if(!image){
         [_delegate sharekit:self didSharedWithStatus:FZZShareStatusFail];
         return;
     }
     
-    //イメージをコピー
-    UIImage *image = [UIImage imageWithCGImage:shareImage.CGImage];
-        
     self.instagramActivity = [FZZInstagramActivity new];
     
     if(self.actionBarButton){
@@ -41,7 +73,7 @@
     }
     
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc]
-                                                        initWithActivityItems:@[image,shareText]
+                                                        initWithActivityItems:@[image,text]
                                                         applicationActivities:@[_instagramActivity,_otherAppActivity]];
     
     self.otherAppActivity.superViewController = activityViewController;
@@ -76,7 +108,6 @@
         }
         
         if(completed){
-            
             //完了メッセージを表示
             if([activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
                 [SVProgressHUD showSuccessWithStatus:[@"Saved!" localized]];
@@ -121,8 +152,10 @@
         }
     }];
     
-    [baseViewController presentViewController:activityViewController animated:YES completion:^{
-        //何もしない
+    [viewController presentViewController:activityViewController animated:YES completion:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
     }];
 }
 

@@ -18,11 +18,19 @@ typedef enum : NSInteger{
 
 @interface FZZShareKit : NSObject
 
-@property (nonatomic, weak) UIButton *actionButton;
-@property (nonatomic, weak) UIBarButtonItem *actionBarButton;
 @property (nonatomic, weak) id<FZZShareKitDelegate>delegate;
 
-- (void)shareImage:(UIImage *)shareImage withText:(NSString *)shareText baseViewController:(UIViewController *)baseViewController;
+- (void)shareImage:(UIImage *)image
+              text:(NSString *)text
+          delegate:(id)delegate
+      actionButton:(UIButton *)actionButton
+    viewController:(UIViewController *)viewController;
+
+- (void)shareImage:(UIImage *)image
+              text:(NSString *)text
+          delegate:(id)delegate
+    actionBarButton:(UIBarButtonItem *)actionBarButton
+    viewController:(UIViewController *)viewController;
 
 @end
 

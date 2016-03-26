@@ -46,7 +46,7 @@
     
     self.delegate = delegate;
     self.actionBarButton = actionBarButton;
-
+    
 }
 
 - (void)shareImage:(UIImage *)image
@@ -94,15 +94,18 @@
                                                             BOOL completed,
                                                             NSArray *returnedItems,
                                                             NSError *error){
-        NSLog(@"%@,%d,%@",activityType,completed,error.description);
         
         if(error){
             [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusFail];
             NSString *errorMessage = [NSString stringWithFormat:@"%@(%@)",[@"Failed!" localized],error.description];
             if(errorMessage){
-                [SVProgressHUD showErrorWithStatus:errorMessage];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD showErrorWithStatus:errorMessage];
+                });
             }else{
-                [SVProgressHUD showErrorWithStatus:[@"Failed!" localized]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD showErrorWithStatus:[@"Failed!" localized]];
+                });
             }
             return;
         }
@@ -110,13 +113,17 @@
         if(completed){
             //完了メッセージを表示
             if([activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
-                [SVProgressHUD showSuccessWithStatus:[@"Saved!" localized]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD showSuccessWithStatus:[@"Saved!" localized]];
+                });
                 [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
             if([activityType isEqualToString:UIActivityTypeCopyToPasteboard]){
-                [SVProgressHUD showSuccessWithStatus:[@"Copied!" localized]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD showSuccessWithStatus:[@"Copied!" localized]];
+                });
                 [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
@@ -130,20 +137,26 @@
                [activityType isEqualToString:UIActivityTypePostToVimeo] ||
                [activityType isEqualToString:UIActivityTypePostToWeibo] ||
                [activityType isEqualToString:UIActivityTypePostToFlickr]){
-                [SVProgressHUD showSuccessWithStatus:[@"Shared!" localized]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD showSuccessWithStatus:[@"Shared!" localized]];
+                });
                 [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
             if([activityType isEqualToString:@"UIActivityTypePostToOtherApp"] ||
                [activityType isEqualToString:@"UIActivityTypePostToInstagram"]){
-                [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
+                });
                 [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
             //それ以外の場合
-            [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
+            });
             [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
             return;
         }else{

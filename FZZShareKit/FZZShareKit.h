@@ -36,6 +36,6 @@ typedef enum : NSInteger{
 
 @protocol FZZShareKitDelegate
 
-- (void)sharekit:(FZZShareKit *)sharekit didSharedWithStatus:(FZZShareStatus)status;
+- (void)FZZShareKit:(FZZShareKit *)sharekit didSharedWithStatus:(FZZShareStatus)status;
 
 @end

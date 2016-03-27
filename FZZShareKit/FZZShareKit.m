@@ -62,7 +62,7 @@
     }
     
     if(!image){
-        [_delegate sharekit:self didSharedWithStatus:FZZShareStatusFail];
+        [_delegate FZZShareKit:self didSharedWithStatus:FZZShareStatusFail];
         return;
     }
     
@@ -100,7 +100,7 @@
                                                             NSError *error){
         
         if(error){
-            [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusFail];
+            [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusFail];
             NSString *errorMessage = [NSString stringWithFormat:@"%@(%@)",[@"Failed!" localized],error.description];
             if(errorMessage){
                 if([NSThread isMainThread]){
@@ -132,7 +132,7 @@
                         [SVProgressHUD showSuccessWithStatus:[@"Saved!" localized]];
                     });
                 }
-                [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
+                [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
@@ -144,7 +144,7 @@
                         [SVProgressHUD showSuccessWithStatus:[@"Copied!" localized]];
                     });
                 }
-                [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
+                [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
@@ -164,7 +164,7 @@
                         [SVProgressHUD showSuccessWithStatus:[@"Shared!" localized]];
                     });
                 }
-                [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
+                [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
@@ -177,7 +177,7 @@
                         [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
                     });
                 }
-                [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
+                [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
@@ -190,10 +190,10 @@
                 });
             }
 
-            [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
+            [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
             return;
         }else{
-            [weakSelf.delegate sharekit:weakSelf didSharedWithStatus:FZZShareStatusCancel];;
+            [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusCancel];;
             return;
         }
     }];

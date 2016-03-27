@@ -42,7 +42,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)sharekit:(FZZShareKit *)sharekit didSharedWithStatus:(FZZShareStatus)status{
+- (void)FZZShareKit:(FZZShareKit *)sharekit didSharedWithStatus:(FZZShareStatus)status{
     if(status == FZZShareStatusSuccess){
         NSLog(@"Success");
     }

@@ -50,8 +50,6 @@
 		C3E9AF4A1C886340009DBDF5 /* Instagram@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instagram@3x.png"; sourceTree = "<group>"; };
 		C3E9AF4B1C886340009DBDF5 /* Instagram@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instagram@2x.png"; sourceTree = "<group>"; };
 		C3E9AF4C1C886340009DBDF5 /* Instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instagram.png; sourceTree = "<group>"; };
-		C3E9AF501C886FB2009DBDF5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
-		C3E9AF511C886FB2009DBDF5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C3E9AF521C887770009DBDF5 /* FZZOtherAppActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZZOtherAppActivity.h; sourceTree = "<group>"; };
 		C3E9AF531C887770009DBDF5 /* FZZOtherAppActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZZOtherAppActivity.m; sourceTree = "<group>"; };
 		C3E9AF551C887D21009DBDF5 /* Menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu@3x.png"; sourceTree = "<group>"; };
@@ -322,7 +320,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				C3E9AF341C84815E009DBDF5 /* Base */,
-				C3E9AF501C886FB2009DBDF5 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -331,7 +328,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				C3E9AF391C84815E009DBDF5 /* Base */,
-				C3E9AF511C886FB2009DBDF5 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

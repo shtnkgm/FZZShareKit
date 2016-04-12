@@ -24,7 +24,7 @@
 }
 
 - (NSString *)activityTitle {
-    return [@"Open Other App" localized];
+    return [@"Open Other App" FZZShareKitLocalized];
 }
 
 - (UIImage *)activityImage {

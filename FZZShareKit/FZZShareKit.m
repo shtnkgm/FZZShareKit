@@ -102,7 +102,7 @@
         
         if(error){
             [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusFail];
-            NSString *errorMessage = [NSString stringWithFormat:@"%@(%@)",[@"Failed!" localized],error.description];
+            NSString *errorMessage = [NSString stringWithFormat:@"%@(%@)",[@"Failed!" FZZShareKitLocalized],error.description];
             if(errorMessage){
                 if([NSThread isMainThread]){
                     [SVProgressHUD showErrorWithStatus:errorMessage];
@@ -113,10 +113,10 @@
                 }
             }else{
                 if([NSThread isMainThread]){
-                    [SVProgressHUD showErrorWithStatus:[@"Failed!" localized]];
+                    [SVProgressHUD showErrorWithStatus:[@"Failed!" FZZShareKitLocalized]];
                 }else{
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD showErrorWithStatus:[@"Failed!" localized]];
+                        [SVProgressHUD showErrorWithStatus:[@"Failed!" FZZShareKitLocalized]];
                     });
                 }
             }
@@ -127,10 +127,10 @@
             //完了メッセージを表示
             if([activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
                 if([NSThread isMainThread]){
-                    [SVProgressHUD showSuccessWithStatus:[@"Saved!" localized]];
+                    [SVProgressHUD showSuccessWithStatus:[@"Saved!" FZZShareKitLocalized]];
                 }else{
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD showSuccessWithStatus:[@"Saved!" localized]];
+                        [SVProgressHUD showSuccessWithStatus:[@"Saved!" FZZShareKitLocalized]];
                     });
                 }
                 [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
@@ -139,10 +139,10 @@
             
             if([activityType isEqualToString:UIActivityTypeCopyToPasteboard]){
                 if([NSThread isMainThread]){
-                    [SVProgressHUD showSuccessWithStatus:[@"Copied!" localized]];
+                    [SVProgressHUD showSuccessWithStatus:[@"Copied!" FZZShareKitLocalized]];
                 }else{
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD showSuccessWithStatus:[@"Copied!" localized]];
+                        [SVProgressHUD showSuccessWithStatus:[@"Copied!" FZZShareKitLocalized]];
                     });
                 }
                 [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
@@ -159,10 +159,10 @@
                [activityType isEqualToString:UIActivityTypePostToWeibo] ||
                [activityType isEqualToString:UIActivityTypePostToFlickr]){
                 if([NSThread isMainThread]){
-                    [SVProgressHUD showSuccessWithStatus:[@"Shared!" localized]];
+                    [SVProgressHUD showSuccessWithStatus:[@"Shared!" FZZShareKitLocalized]];
                 }else{
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD showSuccessWithStatus:[@"Shared!" localized]];
+                        [SVProgressHUD showSuccessWithStatus:[@"Shared!" FZZShareKitLocalized]];
                     });
                 }
                 [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
@@ -172,10 +172,10 @@
             if([activityType isEqualToString:@"UIActivityTypePostToOtherApp"] ||
                [activityType isEqualToString:@"UIActivityTypePostToInstagram"]){
                 if([NSThread isMainThread]){
-                    [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
+                    [SVProgressHUD showSuccessWithStatus:[@"Done!" FZZShareKitLocalized]];
                 }else{
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
+                        [SVProgressHUD showSuccessWithStatus:[@"Done!" FZZShareKitLocalized]];
                     });
                 }
                 [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
@@ -184,10 +184,10 @@
             
             //それ以外の場合
             if([NSThread isMainThread]){
-                [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
+                [SVProgressHUD showSuccessWithStatus:[@"Done!" FZZShareKitLocalized]];
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [SVProgressHUD showSuccessWithStatus:[@"Done!" localized]];
+                    [SVProgressHUD showSuccessWithStatus:[@"Done!" FZZShareKitLocalized]];
                 });
             }
 

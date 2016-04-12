@@ -10,6 +10,6 @@
 
 @interface NSString (FZZShareKitLocalized)
 
-- (instancetype)localized;
+- (instancetype)FZZShareKitLocalized;
 
 @end

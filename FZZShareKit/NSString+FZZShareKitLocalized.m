@@ -10,7 +10,7 @@
 
 @implementation NSString (FZZShareKitLocalized)
 
-- (instancetype)localized{
+- (instancetype)FZZShareKitLocalized{
     NSString *localizedFileName = @"FZZShareKitLocalizable";
     NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"FZZShareKit" withExtension:@"bundle"];
     NSBundle *bundle;

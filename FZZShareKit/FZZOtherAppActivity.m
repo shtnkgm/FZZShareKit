@@ -32,6 +32,7 @@
 }
 
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems {
+    NSLog(@"%s",__func__);
     for (UIActivityItemProvider *item in activityItems) {
         if ([item isKindOfClass:[UIImage class]]) {
             return YES;
@@ -41,7 +42,7 @@
 }
 
 - (void)prepareWithActivityItems:(NSArray *)activityItems {
-    
+    NSLog(@"%s",__func__);
     for (id item in activityItems) {
         if ([item isKindOfClass:[UIImage class]]){
             //アイテムの中から画像を取得
@@ -80,8 +81,18 @@
     return image;
 }
 
+- (void) documentInteractionControllerWillPresentOpenInMenu:(UIDocumentInteractionController *)controller
+{
+    // iÍnform delegate
+    if([self.delegate respondsToSelector:@selector(openInAppActivityWillPresentDocumentInteractionController:)]) {
+        [self.delegate openInAppActivityWillPresentDocumentInteractionController:self];
+    }
+}
+
 - (void) documentInteractionControllerDidDismissOpenInMenu: (UIDocumentInteractionController *) controller
 {
+    NSLog(@"%s",__func__);
+    
     // Inform delegate
     if([self.delegate respondsToSelector:@selector(openInAppActivityDidDismissDocumentInteractionController:)]) {
         [self.delegate openInAppActivityDidDismissDocumentInteractionController:self];

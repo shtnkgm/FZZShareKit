@@ -52,7 +52,7 @@
 - (void)shareImage:(UIImage *)image
               text:(NSString *)text
     viewController:(UIViewController *)viewController{
-    
+    NSLog(@"%s",__func__);
     if([NSThread isMainThread]){
         [SVProgressHUD show];
     }else{
@@ -98,6 +98,7 @@
                                                             BOOL completed,
                                                             NSArray *returnedItems,
                                                             NSError *error){
+        NSLog(@"%@(%d)",activityType,completed);
         
         if(error){
             [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusFail];

@@ -10,4 +10,6 @@
 
 @interface FZZInstagramActivity : UIActivity
 
+@property (nonatomic, weak) UIButton *presentFromButton;
+
 @end

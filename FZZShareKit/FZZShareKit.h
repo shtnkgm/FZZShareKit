@@ -26,12 +26,6 @@ typedef enum : NSInteger{
       actionButton:(UIButton *)actionButton
     viewController:(UIViewController *)viewController;
 
-- (void)shareImage:(UIImage *)image
-              text:(NSString *)text
-          delegate:(id)delegate
-    actionBarButton:(UIBarButtonItem *)actionBarButton
-    viewController:(UIViewController *)viewController;
-
 @end
 
 @protocol FZZShareKitDelegate

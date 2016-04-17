@@ -43,17 +43,6 @@
 }
 
 - (void)FZZShareKit:(FZZShareKit *)sharekit didSharedWithStatus:(FZZShareStatus)status{
-    if(status == FZZShareStatusSuccess){
-        NSLog(@"Success");
-    }
-    
-    if(status == FZZShareStatusFail){
-        NSLog(@"Fail");
-    }
-    
-    if(status == FZZShareStatusCancel){
-        NSLog(@"Cancel");
-    }
 }
 
 @end

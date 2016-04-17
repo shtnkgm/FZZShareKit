@@ -7,19 +7,14 @@
 //
 
 #import "FZZInstagramActivity.h"
-#import "TOCropViewController.h"
 
 @interface FZZInstagramActivity()
 <
-TOCropViewControllerDelegate,
 UIDocumentInteractionControllerDelegate
 >
 
-@property (nonatomic, strong) UIButton *presentFromButton;
-@property (nonatomic, strong) TOCropViewController *cropViewController;
 @property (nonatomic, strong) UIDocumentInteractionController *documentController;
 @property (nonatomic, strong) UIImage *shareImage;
-@property (nonatomic, copy) NSString *shareString;
 
 @end
 
@@ -61,42 +56,14 @@ UIDocumentInteractionControllerDelegate
                 //画像が612*612pxより小さい場合は拡大
                 float ratio = 612.0f/MIN((int)_shareImage.size.width,(int)_shareImage.size.height);
                 self.shareImage = [self resizeImage:_shareImage withRatio:ratio];
-                NSLog(@"%f %f",_shareImage.size.width,_shareImage.size.height);
             }
-        }else if ([item isKindOfClass:[NSString class]]) {
-            //アイテムの中からテキストを取得
-            self.shareString = item;
-        }else{
-            //不明なクラスのアイテム
-            NSLog(@"Unknown item type %@", item);
+            
+            [self performActivity];
+            break;
         }
     }
-}
-
-- (UIViewController *)activityViewController {
-    self.cropViewController = [[TOCropViewController alloc] initWithImage:self.shareImage];
-    self.cropViewController.delegate = self;
-    self.cropViewController.defaultAspectRatio = TOCropViewControllerAspectRatioSquare;
-    self.cropViewController.aspectRatioLocked = YES;
-
-    return self.cropViewController;
-}
-
-- (void)cropViewController:(TOCropViewController *)cropViewController
-            didCropToImage:(UIImage *)image
-                  withRect:(CGRect)cropRect
-                     angle:(NSInteger)angle{
-    if(!image){
-        if (self.documentController) {
-            [self.documentController dismissMenuAnimated:YES];
-        }
-        [self activityDidFinish:NO];
-        return;
-    }else{
-        self.presentFromButton = cropViewController.toolbar.doneIconButton;
-        self.shareImage = image;
-        [self performActivity];
-    }
+    
+    
 }
 
 - (void)performActivity {
@@ -105,7 +72,6 @@ UIDocumentInteractionControllerDelegate
     
     if (![imageData writeToFile:writePath atomically:YES]) {
         // 保存エラー
-        NSLog(@"image save failed to path %@", writePath);
         [self activityDidFinish:NO];
         return;
     }
@@ -117,14 +83,9 @@ UIDocumentInteractionControllerDelegate
     self.documentController.delegate = self;
     self.documentController.UTI = @"com.instagram.exclusivegram";
     
-    if (self.shareString){
-        self.documentController.annotation = @{@"InstagramCaption" : self.shareString};
-    }
-    
     if(![self.documentController presentOpenInMenuFromRect:self.presentFromButton.frame
                                                     inView:self.presentFromButton
                                                   animated:YES]){
-        NSLog(@"couldn't present document interaction controller");
         [self activityDidFinish:NO];
     }
 
@@ -135,14 +96,13 @@ UIDocumentInteractionControllerDelegate
     [self activityDidFinish:YES];
 }
 
+- (void) documentInteractionControllerDidDismissOpenInMenu: (UIDocumentInteractionController *) controller{
+    [self activityDidFinish:NO];
+}
+
 -(BOOL)imageIsLargeEnough:(UIImage *)image {
     CGSize imageSize = [image size];
     return ((imageSize.height * image.scale) >= 612 && (imageSize.width * image.scale) >= 612);
-}
-
--(BOOL)imageIsSquare:(UIImage *)image {
-    CGSize imageSize = image.size;
-    return (imageSize.height == imageSize.width);
 }
 
 - (UIImage *)imageNamedWithoutCache:(NSString *)name{

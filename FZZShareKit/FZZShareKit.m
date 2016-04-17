@@ -8,17 +8,12 @@
 
 #import "FZZShareKit.h"
 #import "FZZInstagramActivity.h"
-#import "FZZOtherAppActivity.h"
 #import "SVProgressHUD.h"
 #import "NSString+FZZShareKitLocalized.h"
 
 @interface FZZShareKit()
 
 @property (nonatomic, strong) FZZInstagramActivity *instagramActivity;
-@property (nonatomic, strong) FZZOtherAppActivity *otherAppActivity;
-
-@property (nonatomic, weak) UIButton *actionButton;
-@property (nonatomic, weak) UIBarButtonItem *actionBarButton;
 
 @end
 
@@ -31,35 +26,8 @@
     viewController:(UIViewController *)viewController{
     
     self.delegate = delegate;
-    self.actionButton = actionButton;
-    
-    [self shareImage:image
-                text:text
-      viewController:viewController];
-}
 
-- (void)shareImage:(UIImage *)image
-              text:(NSString *)text
-          delegate:(id)delegate
-   actionBarButton:(UIBarButtonItem *)actionBarButton
-    viewController:(UIViewController *)viewController{
-    
-    self.delegate = delegate;
-    self.actionBarButton = actionBarButton;
-    
-}
-
-- (void)shareImage:(UIImage *)image
-              text:(NSString *)text
-    viewController:(UIViewController *)viewController{
-    NSLog(@"%s",__func__);
-    if([NSThread isMainThread]){
-        [SVProgressHUD show];
-    }else{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD show];
-        });
-    }
+    [self HUDShow];
     
     if(!image){
         [_delegate FZZShareKit:self didSharedWithStatus:FZZShareStatusFail];
@@ -68,29 +36,18 @@
     
     self.instagramActivity = [FZZInstagramActivity new];
     
-    if(self.actionBarButton){
-        self.otherAppActivity = [[FZZOtherAppActivity alloc] initWithView:((UIViewController *)_delegate).view
-                                                         andBarButtonItem:_actionBarButton];
-    }else{
-        self.otherAppActivity = [[FZZOtherAppActivity alloc] initWithView:((UIViewController *)_delegate).view
-                                                                  andRect:_actionButton.frame];
-    }
-    
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc]
                                                         initWithActivityItems:@[image,text]
-                                                        applicationActivities:@[_instagramActivity,_otherAppActivity]];
-    
-    self.otherAppActivity.superViewController = activityViewController;
+                                                        applicationActivities:@[_instagramActivity]];
     
     activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact,
                                                      UIActivityTypeAddToReadingList,
                                                      UIActivityTypePrint];
     
-    if(_actionButton){
-        activityViewController.popoverPresentationController.sourceView = _actionButton;
-        activityViewController.popoverPresentationController.sourceRect = _actionButton.bounds;
-    }else if(_actionBarButton){
-        activityViewController.popoverPresentationController.barButtonItem = _actionBarButton;
+    if(actionButton){
+        _instagramActivity.presentFromButton = actionButton;
+        activityViewController.popoverPresentationController.sourceView = actionButton;
+        activityViewController.popoverPresentationController.sourceRect = actionButton.bounds;
     }
     
     __weak typeof(self) weakSelf = self;
@@ -98,27 +55,13 @@
                                                             BOOL completed,
                                                             NSArray *returnedItems,
                                                             NSError *error){
-        NSLog(@"%@(%d)",activityType,completed);
-        
         if(error){
             [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusFail];
             NSString *errorMessage = [NSString stringWithFormat:@"%@(%@)",[@"Failed!" FZZShareKitLocalized],error.description];
             if(errorMessage){
-                if([NSThread isMainThread]){
-                    [SVProgressHUD showErrorWithStatus:errorMessage];
-                }else{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD showErrorWithStatus:errorMessage];
-                    });
-                }
+                [self HUDShowErrorWithStatus:errorMessage];
             }else{
-                if([NSThread isMainThread]){
-                    [SVProgressHUD showErrorWithStatus:[@"Failed!" FZZShareKitLocalized]];
-                }else{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD showErrorWithStatus:[@"Failed!" FZZShareKitLocalized]];
-                    });
-                }
+                [self HUDShowErrorWithStatus:[@"Failed!" FZZShareKitLocalized]];
             }
             return;
         }
@@ -126,25 +69,13 @@
         if(completed){
             //完了メッセージを表示
             if([activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
-                if([NSThread isMainThread]){
-                    [SVProgressHUD showSuccessWithStatus:[@"Saved!" FZZShareKitLocalized]];
-                }else{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD showSuccessWithStatus:[@"Saved!" FZZShareKitLocalized]];
-                    });
-                }
+                [self HUDShowSuccessWithStatus:[@"Saved!" FZZShareKitLocalized]];
                 [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
             if([activityType isEqualToString:UIActivityTypeCopyToPasteboard]){
-                if([NSThread isMainThread]){
-                    [SVProgressHUD showSuccessWithStatus:[@"Copied!" FZZShareKitLocalized]];
-                }else{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD showSuccessWithStatus:[@"Copied!" FZZShareKitLocalized]];
-                    });
-                }
+                [self HUDShowSuccessWithStatus:[@"Copied!" FZZShareKitLocalized]];
                 [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
@@ -158,38 +89,19 @@
                [activityType isEqualToString:UIActivityTypePostToVimeo] ||
                [activityType isEqualToString:UIActivityTypePostToWeibo] ||
                [activityType isEqualToString:UIActivityTypePostToFlickr]){
-                if([NSThread isMainThread]){
-                    [SVProgressHUD showSuccessWithStatus:[@"Shared!" FZZShareKitLocalized]];
-                }else{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD showSuccessWithStatus:[@"Shared!" FZZShareKitLocalized]];
-                    });
-                }
+                [self HUDShowSuccessWithStatus:[@"Shared!" FZZShareKitLocalized]];
                 [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
-            if([activityType isEqualToString:@"UIActivityTypePostToOtherApp"] ||
-               [activityType isEqualToString:@"UIActivityTypePostToInstagram"]){
-                if([NSThread isMainThread]){
-                    [SVProgressHUD showSuccessWithStatus:[@"Done!" FZZShareKitLocalized]];
-                }else{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD showSuccessWithStatus:[@"Done!" FZZShareKitLocalized]];
-                    });
-                }
+            if([activityType isEqualToString:@"UIActivityTypePostToInstagram"]){
+                //メッセージは表示しない
                 [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
             //それ以外の場合
-            if([NSThread isMainThread]){
-                [SVProgressHUD showSuccessWithStatus:[@"Done!" FZZShareKitLocalized]];
-            }else{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [SVProgressHUD showSuccessWithStatus:[@"Done!" FZZShareKitLocalized]];
-                });
-            }
+            [self HUDShowSuccessWithStatus:[@"Done!" FZZShareKitLocalized]];
 
             [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
             return;
@@ -210,5 +122,34 @@
     }];
 }
 
+- (void)HUDShow{
+    if([NSThread isMainThread]){
+        [SVProgressHUD show];
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD show];
+        });
+    }
+}
+
+- (void)HUDShowSuccessWithStatus:(NSString *)status{
+    if([NSThread isMainThread]){
+        [SVProgressHUD showSuccessWithStatus:status];
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showSuccessWithStatus:status];
+        });
+    }
+}
+
+- (void)HUDShowErrorWithStatus:(NSString *)status{
+    if([NSThread isMainThread]){
+        [SVProgressHUD showErrorWithStatus:status];
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showErrorWithStatus:status];
+        });
+    }
+}
 
 @end

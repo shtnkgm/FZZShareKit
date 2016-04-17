@@ -1,16 +1,10 @@
 PODS:
-  - SVProgressHUD (HEAD based on 2.0)
-  - TOCropViewController (1.2.6)
-  - TTOpenInAppActivity (1.0)
+  - SVProgressHUD (HEAD based on 2.0.3)
 
 DEPENDENCIES:
   - SVProgressHUD (HEAD)
-  - TOCropViewController
-  - TTOpenInAppActivity
 
 SPEC CHECKSUMS:
-  SVProgressHUD: e9e7c893686a20da55a28015ed384d9425e15479
-  TOCropViewController: 030e38f7c696d8eec4320a5baa8250b49c8f065f
-  TTOpenInAppActivity: c2218fe419d03ddd4ffb1f07d52d66e0d213d0d4
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
 COCOAPODS: 0.39.0

@@ -18,10 +18,6 @@
 		C3E9AF4D1C886340009DBDF5 /* Instagram@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E9AF4A1C886340009DBDF5 /* Instagram@3x.png */; };
 		C3E9AF4E1C886340009DBDF5 /* Instagram@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E9AF4B1C886340009DBDF5 /* Instagram@2x.png */; };
 		C3E9AF4F1C886340009DBDF5 /* Instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E9AF4C1C886340009DBDF5 /* Instagram.png */; };
-		C3E9AF541C887770009DBDF5 /* FZZOtherAppActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E9AF531C887770009DBDF5 /* FZZOtherAppActivity.m */; };
-		C3E9AF581C887D21009DBDF5 /* Menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E9AF551C887D21009DBDF5 /* Menu@3x.png */; };
-		C3E9AF591C887D21009DBDF5 /* Menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E9AF561C887D21009DBDF5 /* Menu@2x.png */; };
-		C3E9AF5A1C887D21009DBDF5 /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E9AF571C887D21009DBDF5 /* Menu.png */; };
 		C3E9AF5D1C887FC2009DBDF5 /* NSString+FZZShareKitLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E9AF5C1C887FC2009DBDF5 /* NSString+FZZShareKitLocalized.m */; };
 		C3E9AF601C88802D009DBDF5 /* FZZShareKitLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3E9AF621C88802D009DBDF5 /* FZZShareKitLocalizable.strings */; };
 		F62D4AD87B51981D60369E89 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA325F2266CD4AB28AB22A1 /* libPods.a */; };
@@ -50,11 +46,6 @@
 		C3E9AF4A1C886340009DBDF5 /* Instagram@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instagram@3x.png"; sourceTree = "<group>"; };
 		C3E9AF4B1C886340009DBDF5 /* Instagram@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instagram@2x.png"; sourceTree = "<group>"; };
 		C3E9AF4C1C886340009DBDF5 /* Instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instagram.png; sourceTree = "<group>"; };
-		C3E9AF521C887770009DBDF5 /* FZZOtherAppActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZZOtherAppActivity.h; sourceTree = "<group>"; };
-		C3E9AF531C887770009DBDF5 /* FZZOtherAppActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZZOtherAppActivity.m; sourceTree = "<group>"; };
-		C3E9AF551C887D21009DBDF5 /* Menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu@3x.png"; sourceTree = "<group>"; };
-		C3E9AF561C887D21009DBDF5 /* Menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu@2x.png"; sourceTree = "<group>"; };
-		C3E9AF571C887D21009DBDF5 /* Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Menu.png; sourceTree = "<group>"; };
 		C3E9AF5B1C887FC2009DBDF5 /* NSString+FZZShareKitLocalized.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FZZShareKitLocalized.h"; sourceTree = "<group>"; };
 		C3E9AF5C1C887FC2009DBDF5 /* NSString+FZZShareKitLocalized.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FZZShareKitLocalized.m"; sourceTree = "<group>"; };
 		C3E9AF611C88802D009DBDF5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FZZShareKitLocalizable.strings; sourceTree = "<group>"; };
@@ -97,8 +88,6 @@
 		C36069AC1C8C63690046D78D /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				C3E9AF521C887770009DBDF5 /* FZZOtherAppActivity.h */,
-				C3E9AF531C887770009DBDF5 /* FZZOtherAppActivity.m */,
 				C3E9AF461C8861A1009DBDF5 /* FZZInstagramActivity.h */,
 				C3E9AF471C8861A1009DBDF5 /* FZZInstagramActivity.m */,
 			);
@@ -165,9 +154,6 @@
 		C3E9AF491C886337009DBDF5 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				C3E9AF551C887D21009DBDF5 /* Menu@3x.png */,
-				C3E9AF561C887D21009DBDF5 /* Menu@2x.png */,
-				C3E9AF571C887D21009DBDF5 /* Menu.png */,
 				C3E9AF4A1C886340009DBDF5 /* Instagram@3x.png */,
 				C3E9AF4B1C886340009DBDF5 /* Instagram@2x.png */,
 				C3E9AF4C1C886340009DBDF5 /* Instagram.png */,
@@ -236,14 +222,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3E9AF3A1C84815E009DBDF5 /* LaunchScreen.storyboard in Resources */,
-				C3E9AF5A1C887D21009DBDF5 /* Menu.png in Resources */,
 				C3E9AF4D1C886340009DBDF5 /* Instagram@3x.png in Resources */,
 				C3E9AF351C84815E009DBDF5 /* Main.storyboard in Resources */,
-				C3E9AF591C887D21009DBDF5 /* Menu@2x.png in Resources */,
 				C3E9AF601C88802D009DBDF5 /* FZZShareKitLocalizable.strings in Resources */,
 				C3E9AF451C85F112009DBDF5 /* AppBankOff.jpeg in Resources */,
 				C3E9AF4F1C886340009DBDF5 /* Instagram.png in Resources */,
-				C3E9AF581C887D21009DBDF5 /* Menu@3x.png in Resources */,
 				C3E9AF4E1C886340009DBDF5 /* Instagram@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,7 +287,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3E9AF321C84815E009DBDF5 /* ViewController.m in Sources */,
-				C3E9AF541C887770009DBDF5 /* FZZOtherAppActivity.m in Sources */,
 				C3E9AF431C85EEE2009DBDF5 /* FZZShareKit.m in Sources */,
 				C3E9AF5D1C887FC2009DBDF5 /* NSString+FZZShareKitLocalized.m in Sources */,
 				C3E9AF481C8861A1009DBDF5 /* FZZInstagramActivity.m in Sources */,

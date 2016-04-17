@@ -300,7 +300,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			HLel/TbAFrI5G77nHlGb+fi3BFc=
+			5YOnfTnISK+vioUWvQ9sglHY8Yc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -318,7 +318,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			dO0qb12zfiTQk4CTd18XRMYNPGA=
+			n0mgJUG+PEuKI0CvlucDoL9ZSEA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -365,18 +365,6 @@
 		<key>Instagram@3x.png</key>
 		<data>
 		DrR9/u9uPtzI2GsJjgx0Bb3U3ko=
-		</data>
-		<key>Menu.png</key>
-		<data>
-		hnPc+opp1uMuH4ljc+sZufzFJ8Y=
-		</data>
-		<key>Menu@2x.png</key>
-		<data>
-		rfjwNf+QrLSSlQ+td8dMe0Y1hbY=
-		</data>
-		<key>Menu@3x.png</key>
-		<data>
-		+v7O7gHqalt0od8vPHgNItWvRUg=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -1082,11 +1070,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			HLel/TbAFrI5G77nHlGb+fi3BFc=
+			5YOnfTnISK+vioUWvQ9sglHY8Yc=
 			</data>
 			<key>hash2</key>
 			<data>
-			0TDiGB/CFHAe0Yyw+wWC/6WbTbou5TqAUpnHP2TCFJk=
+			97ZFJ+rcB8D1E/6NBWCWFw80IH/hMMpIAulH40xZf7I=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1108,11 +1096,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			dO0qb12zfiTQk4CTd18XRMYNPGA=
+			n0mgJUG+PEuKI0CvlucDoL9ZSEA=
 			</data>
 			<key>hash2</key>
 			<data>
-			vAco4AvyNqspEBdZgzTs6BLWbUfa9efUXKBX6NWFhCs=
+			KzxNKZh924I30NdplJjd+PUNyjRnpcJtgUe0TR8mNAM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1187,39 +1175,6 @@
 			<key>hash2</key>
 			<data>
 			onmYclcIwf7R421psnzmZ2JCEuT2X5+eOoYAO+Ax5NM=
-			</data>
-		</dict>
-		<key>Menu.png</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			hnPc+opp1uMuH4ljc+sZufzFJ8Y=
-			</data>
-			<key>hash2</key>
-			<data>
-			J8BWUtuZxWUB++PNQcZI8ehwokZgnoNsj9cro6x2J9Q=
-			</data>
-		</dict>
-		<key>Menu@2x.png</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			rfjwNf+QrLSSlQ+td8dMe0Y1hbY=
-			</data>
-			<key>hash2</key>
-			<data>
-			xqsGvBj3pCAEa7H0Ob2ETn6OtiXEVBM4Aa44ciex89c=
-			</data>
-		</dict>
-		<key>Menu@3x.png</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			+v7O7gHqalt0od8vPHgNItWvRUg=
-			</data>
-			<key>hash2</key>
-			<data>
-			3DGoa6Iys2ZAAGRGfDWJ7aTn2Hs3JeuXx2Y3+pzZ8fU=
 			</data>
 		</dict>
 		<key>SVProgressHUD.bundle/angle-mask.png</key>

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "FZZShareKit"
-s.version      = "0.0.14"
+s.version      = "0.0.15"
 s.summary      = "共有画面をかんたんに作成"
 s.homepage     = "http://shtnkgm.github.io/"
 s.license      = { :type => "MIT", :file => "LICENSE.txt" }
@@ -14,8 +14,5 @@ s.resources    = ["FZZShareKit/*.{xib}","FZZShareKit/*.{png}"]
 s.resource_bundles = { 'FZZShareKit' => ["FZZShareKit/*.lproj"]}
 s.framework  = 'Foundation', 'UIKit'
 s.dependency 'SVProgressHUD'
-s.dependency 'ChameleonFramework'
-s.dependency 'TOCropViewController'
-s.dependency 'TTOpenInAppActivity'
 
 end

@@ -11,7 +11,7 @@
 @implementation NSString (FZZShareKitLocalized)
 
 - (instancetype)FZZShareKitLocalized{
-    NSLog(@"%@:%s",self,__func__);
+    //NSLog(@"%@:%s",self,__func__);
     NSString *localizedFileName = @"FZZShareKitLocalizable";
     NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"FZZShareKit" withExtension:@"bundle"];
     NSBundle *bundle;

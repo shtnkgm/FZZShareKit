@@ -59,9 +59,9 @@
             [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusFail];
             NSString *errorMessage = [NSString stringWithFormat:@"%@(%@)",[@"Failed!" FZZShareKitLocalized],error.description];
             if(errorMessage){
-                [self HUDShowErrorWithStatus:errorMessage];
+                [weakSelf HUDShowErrorWithStatus:errorMessage];
             }else{
-                [self HUDShowErrorWithStatus:[@"Failed!" FZZShareKitLocalized]];
+                [weakSelf HUDShowErrorWithStatus:[@"Failed!" FZZShareKitLocalized]];
             }
             return;
         }
@@ -69,13 +69,13 @@
         if(completed){
             //完了メッセージを表示
             if([activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
-                [self HUDShowSuccessWithStatus:[@"Saved!" FZZShareKitLocalized]];
+                [weakSelf HUDShowSuccessWithStatus:[@"Saved!" FZZShareKitLocalized]];
                 [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
             
             if([activityType isEqualToString:UIActivityTypeCopyToPasteboard]){
-                [self HUDShowSuccessWithStatus:[@"Copied!" FZZShareKitLocalized]];
+                [weakSelf HUDShowSuccessWithStatus:[@"Copied!" FZZShareKitLocalized]];
                 [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
@@ -89,7 +89,7 @@
                [activityType isEqualToString:UIActivityTypePostToVimeo] ||
                [activityType isEqualToString:UIActivityTypePostToWeibo] ||
                [activityType isEqualToString:UIActivityTypePostToFlickr]){
-                [self HUDShowSuccessWithStatus:[@"Shared!" FZZShareKitLocalized]];
+                [weakSelf HUDShowSuccessWithStatus:[@"Shared!" FZZShareKitLocalized]];
                 [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
                 return;
             }
@@ -101,7 +101,7 @@
             }
             
             //それ以外の場合
-            [self HUDShowSuccessWithStatus:[@"Done!" FZZShareKitLocalized]];
+            [weakSelf HUDShowSuccessWithStatus:[@"Done!" FZZShareKitLocalized]];
 
             [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
             return;

@@ -9,9 +9,7 @@
 #import "FZZInstagramActivity.h"
 
 @interface FZZInstagramActivity()
-<
-UIDocumentInteractionControllerDelegate
->
+<UIDocumentInteractionControllerDelegate>
 
 @property (nonatomic, strong) UIDocumentInteractionController *documentController;
 @property (nonatomic, strong) UIImage *shareImage;

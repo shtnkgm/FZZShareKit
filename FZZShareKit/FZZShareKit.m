@@ -30,7 +30,7 @@
     [self HUDShow];
     
     if(!image){
-        [_delegate FZZShareKit:self didSharedWithStatus:FZZShareStatusFail];
+        [self.delegate FZZShareKit:self didSharedWithStatus:FZZShareStatusFail];
         return;
     }
     
@@ -38,88 +38,96 @@
     
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc]
                                                         initWithActivityItems:@[image,text]
-                                                        applicationActivities:@[_instagramActivity]];
+                                                        applicationActivities:@[self.instagramActivity]];
     
     activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact,
                                                      UIActivityTypeAddToReadingList,
                                                      UIActivityTypePrint];
     
     if(actionButton){
-        _instagramActivity.presentFromButton = actionButton;
+        self.instagramActivity.presentFromButton = actionButton;
         activityViewController.popoverPresentationController.sourceView = actionButton;
         activityViewController.popoverPresentationController.sourceRect = actionButton.bounds;
     }
     
     __weak typeof(self) weakSelf = self;
+    
+    //activityControllerを表示
+    [viewController presentViewController:activityViewController animated:YES completion:^{
+        [weakSelf HUDDismiss];
+    }];
+    
+    
+    //完了後の処理
     [activityViewController setCompletionWithItemsHandler:^(NSString *activityType,
                                                             BOOL completed,
                                                             NSArray *returnedItems,
                                                             NSError *error){
+        //エラーの場合
         if(error){
-            [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusFail];
-            NSString *errorMessage = [NSString stringWithFormat:@"%@(%@)",[@"Failed!" FZZShareKitLocalized],error.description];
-            if(errorMessage){
-                [weakSelf HUDShowErrorWithStatus:errorMessage];
-            }else{
-                [weakSelf HUDShowErrorWithStatus:[@"Failed!" FZZShareKitLocalized]];
-            }
+            [weakSelf handleError:error];
             return;
         }
         
-        if(completed){
-            //完了メッセージを表示
-            if([activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
-                [weakSelf HUDShowSuccessWithStatus:[@"Saved!" FZZShareKitLocalized]];
-                [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
-                return;
-            }
-            
-            if([activityType isEqualToString:UIActivityTypeCopyToPasteboard]){
-                [weakSelf HUDShowSuccessWithStatus:[@"Copied!" FZZShareKitLocalized]];
-                [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
-                return;
-            }
-            
-            if([activityType isEqualToString:UIActivityTypeMail] ||
-               [activityType isEqualToString:UIActivityTypeMessage] ||
-               [activityType isEqualToString:UIActivityTypeAirDrop] ||
-               [activityType isEqualToString:UIActivityTypePostToFacebook] ||
-               [activityType isEqualToString:UIActivityTypePostToTencentWeibo] ||
-               [activityType isEqualToString:UIActivityTypePostToTwitter] ||
-               [activityType isEqualToString:UIActivityTypePostToVimeo] ||
-               [activityType isEqualToString:UIActivityTypePostToWeibo] ||
-               [activityType isEqualToString:UIActivityTypePostToFlickr]){
-                [weakSelf HUDShowSuccessWithStatus:[@"Shared!" FZZShareKitLocalized]];
-                [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
-                return;
-            }
-            
-            if([activityType isEqualToString:@"UIActivityTypePostToInstagram"]){
-                //メッセージは表示しない
-                [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
-                return;
-            }
-            
-            //それ以外の場合
-            [weakSelf HUDShowSuccessWithStatus:[@"Done!" FZZShareKitLocalized]];
-
-            [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusSuccess];
-            return;
-        }else{
+        //キャンセルの場合
+        if(!completed){
             [weakSelf.delegate FZZShareKit:weakSelf didSharedWithStatus:FZZShareStatusCancel];;
             return;
         }
+        
+        //成功した場合
+        [weakSelf handleSuccessWithActivityType:activityType];
     }];
+}
+
+- (void)handleError:(NSError *)error{
+    NSString *errorMessage = [NSString stringWithFormat:@"%@(%@)",[@"Failed!" FZZShareKitLocalized],error.description];
+    if(errorMessage){
+        [self HUDShowErrorWithStatus:errorMessage];
+    }else{
+        [self HUDShowErrorWithStatus:[@"Failed!" FZZShareKitLocalized]];
+    }
     
-    [viewController presentViewController:activityViewController animated:YES completion:^{
-        if([NSThread isMainThread]){
+    [self.delegate FZZShareKit:self didSharedWithStatus:FZZShareStatusFail];
+}
+
+- (void)handleSuccessWithActivityType:(NSString *)activityType{
+    NSString *message;
+    
+    //完了メッセージを表示
+    if([activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
+        message = [@"Saved!" FZZShareKitLocalized];
+    }else if ([activityType isEqualToString:UIActivityTypeCopyToPasteboard]){
+        message = [@"Copied!" FZZShareKitLocalized];
+    }else if ([activityType isEqualToString:UIActivityTypeMail] ||
+              [activityType isEqualToString:UIActivityTypeMessage] ||
+              [activityType isEqualToString:UIActivityTypeAirDrop] ||
+              [activityType isEqualToString:UIActivityTypePostToFacebook] ||
+              [activityType isEqualToString:UIActivityTypePostToTencentWeibo] ||
+              [activityType isEqualToString:UIActivityTypePostToTwitter] ||
+              [activityType isEqualToString:UIActivityTypePostToVimeo] ||
+              [activityType isEqualToString:UIActivityTypePostToWeibo] ||
+              [activityType isEqualToString:UIActivityTypePostToFlickr]){
+        message = [@"Shared!" FZZShareKitLocalized];
+    }else if([activityType isEqualToString:@"UIActivityTypePostToInstagram"]){
+        //メッセージは表示しない
+        [self.delegate FZZShareKit:self didSharedWithStatus:FZZShareStatusSuccess];
+        return;
+    }else{
+        message = [@"Done!" FZZShareKitLocalized];
+    }
+    [self HUDShowSuccessWithStatus:message];
+    [self.delegate FZZShareKit:self didSharedWithStatus:FZZShareStatusSuccess];
+}
+
+- (void)HUDDismiss{
+    if([NSThread isMainThread]){
+        [SVProgressHUD dismiss];
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD dismiss];
-        }else{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismiss];
-            });
-        }
-    }];
+        });
+    }
 }
 
 - (void)HUDShow{

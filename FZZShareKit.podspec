@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "FZZShareKit"
-s.version      = "0.0.18"
+s.version      = "0.0.19"
 s.summary      = "共有画面をかんたんに作成"
 s.homepage     = "http://shtnkgm.github.io/"
 s.license      = { :type => "MIT", :file => "LICENSE.txt" }

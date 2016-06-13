@@ -20,12 +20,12 @@
 		C3E9AF4F1C886340009DBDF5 /* Instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E9AF4C1C886340009DBDF5 /* Instagram.png */; };
 		C3E9AF5D1C887FC2009DBDF5 /* NSString+FZZShareKitLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E9AF5C1C887FC2009DBDF5 /* NSString+FZZShareKitLocalized.m */; };
 		C3E9AF601C88802D009DBDF5 /* FZZShareKitLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3E9AF621C88802D009DBDF5 /* FZZShareKitLocalizable.strings */; };
-		F62D4AD87B51981D60369E89 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA325F2266CD4AB28AB22A1 /* libPods.a */; };
+		C3ECE47242C977977358DFD2 /* libPods-FZZShareKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6828650A9C64DF421D79F /* libPods-FZZShareKit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0EC69996ADE2DCB4028E2029 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		B0497BC459C39FB5A734C8ED /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		38BBD931DF8DB9C59875C3A8 /* Pods-FZZShareKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FZZShareKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FZZShareKit/Pods-FZZShareKit.debug.xcconfig"; sourceTree = "<group>"; };
+		8A5397BB7A727601C4482554 /* Pods-FZZShareKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FZZShareKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-FZZShareKit/Pods-FZZShareKit.release.xcconfig"; sourceTree = "<group>"; };
 		C3606A041C8DC4FB0046D78D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C3606A061C8DC5030046D78D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C3606A081C8DC5090046D78D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -50,7 +50,7 @@
 		C3E9AF5C1C887FC2009DBDF5 /* NSString+FZZShareKitLocalized.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FZZShareKitLocalized.m"; sourceTree = "<group>"; };
 		C3E9AF611C88802D009DBDF5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FZZShareKitLocalizable.strings; sourceTree = "<group>"; };
 		C3E9AF631C888030009DBDF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FZZShareKitLocalizable.strings; sourceTree = "<group>"; };
-		ECA325F2266CD4AB28AB22A1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEA6828650A9C64DF421D79F /* libPods-FZZShareKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FZZShareKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F62D4AD87B51981D60369E89 /* libPods.a in Frameworks */,
+				C3ECE47242C977977358DFD2 /* libPods-FZZShareKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,16 +71,16 @@
 				C3606A081C8DC5090046D78D /* StoreKit.framework */,
 				C3606A061C8DC5030046D78D /* SystemConfiguration.framework */,
 				C3606A041C8DC4FB0046D78D /* CFNetwork.framework */,
-				ECA325F2266CD4AB28AB22A1 /* libPods.a */,
+				CEA6828650A9C64DF421D79F /* libPods-FZZShareKit.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8A1D6EBD689690E4C6FEC49F /* Pods */ = {
+		75534648BDEE1FDBCF00CE2F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0EC69996ADE2DCB4028E2029 /* Pods.debug.xcconfig */,
-				B0497BC459C39FB5A734C8ED /* Pods.release.xcconfig */,
+				38BBD931DF8DB9C59875C3A8 /* Pods-FZZShareKit.debug.xcconfig */,
+				8A5397BB7A727601C4482554 /* Pods-FZZShareKit.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -113,8 +113,8 @@
 			children = (
 				C3E9AF291C84815E009DBDF5 /* FZZShareKit */,
 				C3E9AF281C84815E009DBDF5 /* Products */,
-				8A1D6EBD689690E4C6FEC49F /* Pods */,
 				1DF6751A944C105B0B3DAE33 /* Frameworks */,
+				75534648BDEE1FDBCF00CE2F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,12 +168,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3E9AF3E1C84815E009DBDF5 /* Build configuration list for PBXNativeTarget "FZZShareKit" */;
 			buildPhases = (
-				C7DB54D09C9F3A25B880E46A /* Check Pods Manifest.lock */,
+				E1F2302A32713878F212CB57 /* [CP] Check Pods Manifest.lock */,
 				C3E9AF231C84815E009DBDF5 /* Sources */,
 				C3E9AF241C84815E009DBDF5 /* Frameworks */,
 				C3E9AF251C84815E009DBDF5 /* Resources */,
-				408FFC2409A5B783649B1C3B /* Copy Pods Resources */,
-				106F8D6AD2A4A7CF7BBE193C /* Embed Pods Frameworks */,
+				A58E31FC51FCF84E6640C4AA /* [CP] Embed Pods Frameworks */,
+				4F805A5C9BF9FBD7D7ECF579 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,44 +234,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		106F8D6AD2A4A7CF7BBE193C /* Embed Pods Frameworks */ = {
+		4F805A5C9BF9FBD7D7ECF579 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FZZShareKit/Pods-FZZShareKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		408FFC2409A5B783649B1C3B /* Copy Pods Resources */ = {
+		A58E31FC51FCF84E6640C4AA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FZZShareKit/Pods-FZZShareKit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C7DB54D09C9F3A25B880E46A /* Check Pods Manifest.lock */ = {
+		E1F2302A32713878F212CB57 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,7 +408,7 @@
 		};
 		C3E9AF3F1C84815E009DBDF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0EC69996ADE2DCB4028E2029 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 38BBD931DF8DB9C59875C3A8 /* Pods-FZZShareKit.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = FZZShareKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -420,7 +420,7 @@
 		};
 		C3E9AF401C84815E009DBDF5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0497BC459C39FB5A734C8ED /* Pods.release.xcconfig */;
+			baseConfigurationReference = 8A5397BB7A727601C4482554 /* Pods-FZZShareKit.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = FZZShareKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

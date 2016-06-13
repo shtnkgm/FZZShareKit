@@ -1,7 +1,9 @@
 platform :ios,'8.0'
-inhibit_all_warnings!
 
-pod 'SVProgressHUD', :head
+target 'FZZShareKit' do
 
+pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
+
+end
 
 

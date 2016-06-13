@@ -52,9 +52,11 @@
     
     __weak typeof(self) weakSelf = self;
     
-    //activityControllerを表示
-    [viewController presentViewController:activityViewController animated:YES completion:^{
-        [weakSelf HUDDismiss];
+    //activityControllerを表示（メインスレッドで実行）
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [viewController presentViewController:activityViewController animated:YES completion:^{
+            [weakSelf HUDDismiss];
+        }];
     }];
     
     

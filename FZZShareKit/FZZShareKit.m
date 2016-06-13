@@ -57,7 +57,7 @@
         [viewController presentViewController:activityViewController animated:YES completion:^{
             [weakSelf HUDDismiss];
         }];
-    }];
+    });
     
     
     //完了後の処理
